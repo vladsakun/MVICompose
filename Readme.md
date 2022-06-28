@@ -1,1 +1,2 @@
-Demo project MVI + Jetpack Compose + Biometrics
+Demo project<br/>
+MVI + Jetpack Compose + Biometrics
