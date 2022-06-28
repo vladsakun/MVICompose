@@ -1,0 +1,49 @@
+package com.example.mvicompose.ui.feature.movie.list
+
+import androidx.lifecycle.viewModelScope
+import com.example.mvicompose.data.repository.MovieRepositoryImpl
+import com.example.mvicompose.ui.base.BaseViewModel
+import kotlinx.coroutines.launch
+
+class MoviesListViewModel :
+    BaseViewModel<MoviesContract.Event, MoviesContract.State, MoviesContract.Effect>() {
+
+    private val repository = MovieRepositoryImpl()
+    private var isError = true
+
+    init {
+        getMovies()
+    }
+
+    override fun setInitialState() = MoviesContract.State(
+        movies = emptyList(),
+        isLoading = true,
+        isError = false
+    )
+
+    override fun handleEvents(event: MoviesContract.Event) {
+        when (event) {
+            is MoviesContract.Event.MovieSelection -> setEffect {
+                MoviesContract.Effect.Navigation.ToMovieDetails(
+                    event.movie
+                )
+            }
+            is MoviesContract.Event.Retry -> getMovies()
+        }
+    }
+
+    private fun getMovies() {
+        viewModelScope.launch {
+            setState { copy(isLoading = true, isError = false) }
+
+            val movies = repository.getMovies()
+
+            if (isError) {
+                setState { copy(isError = true, isLoading = false) }
+                isError = false
+            } else {
+                setState { copy(movies = movies, isLoading = false) }
+            }
+        }
+    }
+}
