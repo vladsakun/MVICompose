@@ -16,7 +16,12 @@ class MoviesContract {
         val movies: List<Movie>,
         val isLoading: Boolean,
         val isError: Boolean
-    ) : ViewState
+    ) : ViewState {
+
+        companion object {
+            fun getDefaultState() = State(emptyList(), isLoading = false, isError = false)
+        }
+    }
 
     sealed class Effect : ViewSideEffect {
         object DataWasLoaded : Effect()

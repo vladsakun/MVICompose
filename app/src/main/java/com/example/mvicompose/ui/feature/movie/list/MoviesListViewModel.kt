@@ -15,11 +15,7 @@ class MoviesListViewModel :
         getMovies()
     }
 
-    override fun setInitialState() = MoviesContract.State(
-        movies = emptyList(),
-        isLoading = true,
-        isError = false
-    )
+    override fun setInitialState() = MoviesContract.State.getDefaultState()
 
     override fun handleEvents(event: MoviesContract.Event) {
         when (event) {
@@ -32,6 +28,7 @@ class MoviesListViewModel :
         }
     }
 
+    // TODO Extract to a reducer
     private fun getMovies() {
         viewModelScope.launch {
             setState { copy(isLoading = true, isError = false) }

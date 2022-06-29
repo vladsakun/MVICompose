@@ -18,9 +18,12 @@ class LoginContract {
         ) : Event()
     }
 
-    data class State(
-        val isLoading: Boolean
-    ) : ViewState
+    data class State(val isLoading: Boolean) : ViewState {
+
+        companion object {
+            fun getDefaultState() = State(false)
+        }
+    }
 
     sealed class Effect : ViewSideEffect {
 

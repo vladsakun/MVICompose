@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel : BaseViewModel<Event, State, Effect>() {
 
-    override fun setInitialState() = State(false)
+    override fun setInitialState() = State.getDefaultState()
     private val cryptographyManager = CryptographyManagerImpl()
 
     override fun handleEvents(event: Event) {
