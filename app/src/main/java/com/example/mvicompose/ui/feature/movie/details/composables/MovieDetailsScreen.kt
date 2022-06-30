@@ -80,59 +80,46 @@ fun MovieDetailsScreen(
             ) {
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(paddingMedium)
+                    modifier = Modifier.padding(paddingMedium)
                 ) {
-                    Box(
+                    Image(
+                        painter = painterResource(id = movie.posterDrawableResId),
+                        contentDescription = "",
                         modifier = Modifier
                             .fillMaxWidth()
-                            .weight(1f),
-                        contentAlignment = Alignment.TopStart
-                    ) {
-                        Image(
-                            painter = painterResource(id = movie.posterDrawableResId),
-                            contentDescription = "",
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(RoundedCornerShape(10.dp)),
-                            contentScale = ContentScale.Fit,
-                        )
-                    }
+                            .weight(1f)
+                            .clip(RoundedCornerShape(10.dp)),
+                        contentScale = ContentScale.Fit,
+                    )
 
                     Spacer(modifier = Modifier.size(paddingSmall))
 
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .weight(2f),
-                        contentAlignment = Alignment.TopStart
+                    Column(
+                        modifier = Modifier.weight(2f)
                     ) {
-                        Column {
-                            LabelText(text = stringResource(id = R.string.movie_label_rating))
+                        LabelText(text = stringResource(id = R.string.movie_label_rating))
 
-                            Spacer(modifier = Modifier.size(paddingXXSmall))
+                        Spacer(modifier = Modifier.size(paddingXXSmall))
 
-                            Text(
-                                text = stringResource(
-                                    id = R.string.movie_rating,
-                                    movie.voteAverage.toString()
-                                ),
-                                style = MaterialTheme.typography.subtitle1
-                            )
+                        Text(
+                            text = stringResource(
+                                id = R.string.movie_rating,
+                                movie.voteAverage.toString()
+                            ),
+                            style = MaterialTheme.typography.subtitle1
+                        )
 
-                            Spacer(modifier = Modifier.size(paddingSmall))
+                        Spacer(modifier = Modifier.size(paddingSmall))
 
-                            LabelText(text = stringResource(id = R.string.movie_label_overview))
+                        LabelText(text = stringResource(id = R.string.movie_label_overview))
 
-                            Spacer(modifier = Modifier.size(paddingXXSmall))
+                        Spacer(modifier = Modifier.size(paddingXXSmall))
 
-                            Text(
-                                text = movie.overview,
-                                style = MaterialTheme.typography.subtitle1,
-                                modifier = Modifier.fillMaxWidth()
-                            )
-                        }
+                        Text(
+                            text = movie.overview,
+                            style = MaterialTheme.typography.subtitle1,
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     }
                 }
 
@@ -141,7 +128,6 @@ fun MovieDetailsScreen(
                 Text(
                     text = stringResource(id = R.string.movie_label_actors),
                     modifier = Modifier
-                        .fillMaxWidth()
                         .padding(start = paddingMedium, top = paddingMedium),
                     style = MaterialTheme.typography.h6
                 )

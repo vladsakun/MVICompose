@@ -114,12 +114,11 @@ fun MoviesListItem(
                     }
             )
         }
-
-        Divider(
-            startIndent = dividerStartIntent,
-            modifier = Modifier.padding(end = paddingMedium)
-        )
     }
+    Divider(
+        startIndent = dividerStartIntent,
+        modifier = Modifier.padding(end = paddingMedium)
+    )
 }
 
 @Preview(showBackground = true)

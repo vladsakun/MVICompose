@@ -9,17 +9,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.mvicompose.R
-import com.example.mvicompose.ui.theme.MVIComposeTheme
 
 @Composable
 fun PreviewScreen() {
-    MVIComposeTheme {
-        Box(modifier = Modifier.fillMaxSize()) {
-            Text(
-                modifier = Modifier.align(Alignment.Center),
-                text = stringResource(id = R.string.preview),
-                style = MaterialTheme.typography.h4
-            )
-        }
+    Box(modifier = Modifier.fillMaxSize()) {
+        Text(
+            modifier = Modifier.align(Alignment.Center),
+            text = stringResource(id = R.string.preview),
+            style = MaterialTheme.typography.h4
+        )
     }
 }
