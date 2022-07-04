@@ -9,6 +9,7 @@ jobs:
     executor:
       name: android/android-machine
       resource-class: xlarge
+      tag: 2022.07.04
     steps:
       - checkout
       - android/restore-gradle-cache
