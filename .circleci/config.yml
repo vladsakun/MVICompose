@@ -33,7 +33,7 @@ jobs:
     parameters:
       system-image:
         type: string
-        default: system-images;andorid-30;google_apis;x86
+        default: system-images;andorid-29;google_apis;x86
     executor:
       name: android/android-machine
       resource-class: xlarge
