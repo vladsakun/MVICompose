@@ -1,0 +1,3 @@
+/Users/vladyslav/AndroidStudioProjects/MVICompose/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/rebuild_cache.dir
+/Users/vladyslav/AndroidStudioProjects/MVICompose/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/edit_cache.dir
+/Users/vladyslav/AndroidStudioProjects/MVICompose/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/mvicompose.dir

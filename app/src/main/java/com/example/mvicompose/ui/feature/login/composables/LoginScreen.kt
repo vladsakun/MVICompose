@@ -75,44 +75,45 @@ fun LoginScreen(
         }?.collect()
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    listOf(
-                        colorResource(id = R.color.purple_700),
-                        colorResource(id = R.color.purple_200)
-                    )
-                )
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Button(
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = MaterialTheme.colors.secondary,
-                contentColor = MaterialTheme.colors.primary
-            ),
-            onClick = { onEventSent(LoginContract.Event.LoginButtonClick) }
-        ) {
-            Text(text = stringResource(id = R.string.login))
-        }
-
-        Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
-
-        Button(
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = MaterialTheme.colors.onPrimary,
-                contentColor = MaterialTheme.colors.primary
-            ),
-            onClick = { onEventSent(LoginContract.Event.PreviewButtonClick) }
-        ) {
-            Text(text = stringResource(id = R.string.preview_mode))
-        }
-    }
 
     if (state.isLoading) {
         Progress()
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        listOf(
+                            colorResource(id = R.color.purple_700),
+                            colorResource(id = R.color.purple_200)
+                        )
+                    )
+                ),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Button(
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colors.secondary,
+                    contentColor = MaterialTheme.colors.primary
+                ),
+                onClick = { onEventSent(LoginContract.Event.LoginButtonClick) }
+            ) {
+                Text(text = state.name)
+            }
+
+            Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
+
+            Button(
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colors.onPrimary,
+                    contentColor = MaterialTheme.colors.primary
+                ),
+                onClick = { onEventSent(LoginContract.Event.PreviewButtonClick) }
+            ) {
+                Text(text = stringResource(id = R.string.preview_mode))
+            }
+        }
     }
 }

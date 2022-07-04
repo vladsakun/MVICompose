@@ -9,7 +9,7 @@
     <string name="network_error_retry_button_text">Try again</string>
     <string name="preview_mode">Preview mode</string>
     <string name="preview">Just preview activity</string>
-    <string name="login">Login</string>
+    <string name="login">%s, login</string>
     <string name="biometrics_dialog_title">Biometric login for my app</string>
     <string name="biometrics_dialog_subtitle">Log in using your biometric credential</string>
     <string name="biometrics_dialog_negative_button">Try preview mode</string>

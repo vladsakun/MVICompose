@@ -6,7 +6,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="CryptographyManagerImpl" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
@@ -14,7 +15,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fa7cf58-4648-4b60-b648-719d1e5c632e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.circleci/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.circleci/config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.cmake/api/v1/query/client-agp/cache-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.cmake/api/v1/query/client-agp/cmakeFiles-v1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.cmake/api/v1/query/client-agp/codemodel-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.cmake/api/v1/reply/cache-v2-7832a78cc7ec82738e5d.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.cmake/api/v1/reply/cmakeFiles-v1-4b4cf6ee6aba643d8191.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.cmake/api/v1/reply/codemodel-v2-70a4eea84c62d8bfad17.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.cmake/api/v1/reply/index-2022-07-04T15-17-24-0149.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.cmake/api/v1/reply/target-mvicompose-Debug-bc9539dd1ba61dabd0dd.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.ninja_deps" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/.ninja_log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/3.18.1-g262b901/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/3.18.1-g262b901/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/3.18.1-g262b901/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/3.18.1-g262b901/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/3.18.1-g262b901/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/CMakeFiles/rules.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/android_gradle_build.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/android_gradle_build_command_mvicompose_arm64-v8a.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/android_gradle_build_stderr_mvicompose_arm64-v8a.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/android_gradle_build_stdout_mvicompose_arm64-v8a.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/build.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/cmake_install.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/compile_commands.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/compile_commands.json.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/metadata_generation_command.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/arm64-v8a/prefab_config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.cmake/api/v1/query/client-agp/cache-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.cmake/api/v1/query/client-agp/cmakeFiles-v1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.cmake/api/v1/query/client-agp/codemodel-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.cmake/api/v1/reply/cache-v2-696980a4f51f94c9fa37.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.cmake/api/v1/reply/cmakeFiles-v1-4449d9a9f16a35c721c0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.cmake/api/v1/reply/codemodel-v2-02766a57c4da00212ded.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.cmake/api/v1/reply/index-2022-07-04T15-17-24-0207.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.cmake/api/v1/reply/target-mvicompose-Debug-a2a85d31d10c4004130e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.ninja_deps" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/.ninja_log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/3.18.1-g262b901/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/3.18.1-g262b901/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/3.18.1-g262b901/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/3.18.1-g262b901/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/3.18.1-g262b901/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/CMakeFiles/rules.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/android_gradle_build.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/build.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/cmake_install.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/compile_commands.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/compile_commands.json.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/metadata_generation_command.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.cxx/Debug/2tdm6f4k/x86/prefab_config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/cpp/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/cpp/mvicompose.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mvicompose/cryptography/CryptographyManagerImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mvicompose/cryptography/CryptographyManagerImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mvicompose/ui/feature/login/LoginContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mvicompose/ui/feature/login/LoginContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mvicompose/ui/feature/login/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mvicompose/ui/feature/login/LoginViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/mvicompose/ui/feature/login/composables/LoginScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/mvicompose/ui/feature/login/composables/LoginScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/mvicompose/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/mvicompose/ExampleUnitTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +171,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
     <property name="DEBUGGABLE_PROCESS" value="com.example.mvicompose" />
@@ -110,7 +188,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -384,7 +462,28 @@
       <option name="project" value="LOCAL" />
       <updated>1656940266621</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="add release build">
+      <created>1656941311930</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1656941311930</updated>
+    </task>
+    <task id="LOCAL-00022" summary="add release build">
+      <created>1656941387242</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1656941387242</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add release build">
+      <created>1656941411330</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1656941411330</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,6 +501,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Add readme" />
     <MESSAGE value="Update readme" />
@@ -412,7 +512,8 @@
     <MESSAGE value="Add test dependencies" />
     <MESSAGE value="Update config.yml" />
     <MESSAGE value="Add failed unit test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add failed unit test" />
+    <MESSAGE value="add release build" />
+    <option name="LAST_COMMIT_MESSAGE" value="add release build" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

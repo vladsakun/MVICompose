@@ -1,0 +1,7 @@
+Executable : /Users/vladyslav/Library/Android/sdk/cmake/3.18.1/bin/ninja
+arguments : 
+-C
+/Users/vladyslav/AndroidStudioProjects/MVICompose/app/.cxx/Debug/2tdm6f4k/arm64-v8a
+mvicompose
+jvmArgs : 
+

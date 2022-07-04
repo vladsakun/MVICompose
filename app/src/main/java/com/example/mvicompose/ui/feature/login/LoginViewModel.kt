@@ -19,6 +19,13 @@ class LoginViewModel : BaseViewModel<Event, State, Effect>() {
     override fun setInitialState() = State.getDefaultState()
     private val cryptographyManager = CryptographyManagerImpl()
 
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            val name = getUserName()
+            setState { copy(isLoading = false, name = generateHelloString(name)) }
+        }
+    }
+
     override fun handleEvents(event: Event) {
         when (event) {
             is Event.PreviewButtonClick -> setEffect { Effect.Navigation.ToPreview }
@@ -67,5 +74,18 @@ class LoginViewModel : BaseViewModel<Event, State, Effect>() {
     private suspend fun fetchCVV(): String {
         delay(500)
         return CVV
+    }
+
+    private suspend fun getUserName(): String {
+        delay(200)
+        return "Vlad"
+    }
+
+    external fun generateHelloString(name: String): String
+
+    companion object {
+        init {
+            System.loadLibrary("mvicompose")
+        }
     }
 }

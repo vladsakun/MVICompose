@@ -18,10 +18,13 @@ class LoginContract {
         ) : Event()
     }
 
-    data class State(val isLoading: Boolean) : ViewState {
+    data class State(
+        val isLoading: Boolean,
+        val name: String
+    ) : ViewState {
 
         companion object {
-            fun getDefaultState() = State(false)
+            fun getDefaultState() = State(true, "")
         }
     }
 
