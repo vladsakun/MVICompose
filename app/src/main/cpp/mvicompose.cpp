@@ -1,24 +1,6 @@
 #include <string>
 #include <jni.h>
 
-int getKeySize() {
-    return 128;
-}
-// Do not forget to dynamically load the C++ library into your application.
-//
-// For instance,
-//
-// In MainActivity.java:
-//    static {
-//       System.loadLibrary("mvicompose");
-//    }
-//
-// Or, in MainActivity.kt:
-//    companion object {
-//      init {
-//         System.loadLibrary("mvicompose")
-//      }
-//    }
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_mvicompose_ui_feature_login_LoginViewModel_generateHelloString(JNIEnv *env,
