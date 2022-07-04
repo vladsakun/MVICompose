@@ -75,3 +75,4 @@ workflows:
     jobs:
       - unit-test
       - android-test
+      - release-build
