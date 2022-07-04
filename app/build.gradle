@@ -63,6 +63,9 @@ dependencies {
 	kapt libs.moshi.codegen
 
 	implementation libs.bundles.compose
-
 	implementation libs.bundles.lifecycle
+
+	testImplementation libs.junit
+	androidTestImplementation libs.kakao
+	androidTestImplementation libs.junitAndroid
 }
