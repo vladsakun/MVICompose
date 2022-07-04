@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  android: circleci/android@1.0.3
+  android: circleci/android@2.1.2
   gcp-cli: circleci/gcp-cli@2.2.0
 
 jobs:
@@ -28,44 +28,44 @@ jobs:
       - store_artifacts:
           path: ~/test-results/junit
 
-    android-test:
-      parameters:
-        system-image:
-          type: string
-          default: system-images;andorid-30;google_apis;x86
+  android-test:
+    parameters:
+      system-image:
+        type: string
+        default: system-images;andorid-30;google_apis;x86
+    executor:
+      name: android/android-machine
+      resource-class: xlarge
+    steps:
+      - checkout
+      - android/start-emulator-and-run-tests:
+          test-command: ./gradlew connectedDebugAndroidTest
+          system-image: << parameters.system-image >>
+      - run:
+          name: Save test results
+          command: |
+            mkdrip -p ~/test-results/junit/
+            find . -type f -regex ".*/build/outputs/androidTest-results/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always
+      - store_test_results:
+          path: ~/test-results
+      - store_artifacts:
+          path: ~/test-results/junit
+
+    release-build:
       executor:
         name: android/android-machine
         resource-class: xlarge
       steps:
         - checkout
-        - android/start-emulator-and-run-tests:
-            test-command: ./gradlew connectedDebugAndroidTest
-            system-image: << parameters.system-image >>
+        - android/restore-gradle-cache
+        - android/restore-build-cache
         - run:
-            name: Save test results
+            name: Assemble release build
             command: |
-              mkdrip -p ~/test-results/junit/
-              find . -type f -regex ".*/build/outputs/androidTest-results/.*xml" -exec cp {} ~/test-results/junit/ \;
-            when: always
-        - store_test_results:
-            path: ~/test-results
+              ./gradlew assembleRelease
         - store_artifacts:
-            path: ~/test-results/junit
-
-      release-build:
-        executor:
-          name: android/android-machine
-          resource-class: xlarge
-        steps:
-          - checkout
-          - android/restore-gradle-cache
-          - android/restore-build-cache
-          - run:
-              name: Assemble release build
-              command: |
-                ./gradlew assembleRelease
-          - store_artifacts:
-              path: app/build/outputs/apk/release/app-release-unsigned.apk
+            path: app/build/outputs/apk/release/app-release-unsigned.apk
 
 workflows:
   test-and-build:
