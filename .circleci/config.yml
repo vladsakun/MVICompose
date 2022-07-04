@@ -9,7 +9,7 @@ jobs:
     executor:
       name: android/android-machine
       resource-class: xlarge
-      tag: 2022.07.04
+      tag: 2021.10.1
     steps:
       - checkout
       - android/restore-gradle-cache
@@ -37,7 +37,7 @@ jobs:
     executor:
       name: android/android-machine
       resource-class: xlarge
-      tag: 2022.07.04
+      tag: 2021.10.1
     steps:
       - checkout
       - android/start-emulator-and-run-tests:
@@ -58,7 +58,7 @@ jobs:
     executor:
       name: android/android-machine
       resource-class: xlarge
-      tag: 2022.07.04
+      tag: 2021.10.1
     steps:
       - checkout
       - android/restore-gradle-cache
