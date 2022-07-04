@@ -75,10 +75,6 @@ workflows:
     jobs:
       - unit-test
       - android-test
-  build:
-    jobs:
-      - unit-test
-      - android-test
       - release build
         filters:
           branches:
