@@ -46,7 +46,7 @@ jobs:
       - run:
           name: Save test results
           command: |
-            mkdrip -p ~/test-results/junit/
+            mkdir -p ~/test-results/junit/
             find . -type f -regex ".*/build/outputs/androidTest-results/.*xml" -exec cp {} ~/test-results/junit/ \;
           when: always
       - store_test_results:
