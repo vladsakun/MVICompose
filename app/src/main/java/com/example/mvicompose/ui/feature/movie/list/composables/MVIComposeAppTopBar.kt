@@ -10,7 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.mvicompose.R
 
 @Composable
-fun MoviesTopBar(
+fun MVIComposeAppTopBar(
     text: String = stringResource(id = R.string.movies_screen_top_bar_title)
 ) {
     TopAppBar(
@@ -22,5 +22,5 @@ fun MoviesTopBar(
 @Preview(showBackground = true)
 @Composable
 fun ReposTopBarPreview() {
-    MoviesTopBar()
+    MVIComposeAppTopBar()
 }

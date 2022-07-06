@@ -10,6 +10,7 @@ import com.example.mvicompose.ui.feature.movie.list.composables.MoviesScreen
 @Composable
 fun MoviesScreenDestination(navController: NavController) {
     val viewModel: MoviesListViewModel = viewModel()
+
     MoviesScreen(
         state = viewModel.viewState.value,
         effectFlow = viewModel.effect,

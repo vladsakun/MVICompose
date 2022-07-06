@@ -42,7 +42,7 @@ fun MoviesScreen(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = { MoviesTopBar() }
+        topBar = { MVIComposeAppTopBar() }
     ) {
         when {
             state.isLoading -> Progress()

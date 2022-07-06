@@ -4,12 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.mvicompose.data.model.Movie
+import com.example.mvicompose.ui.feature.main.BaseAndroidViewModelFactory
 import com.example.mvicompose.ui.feature.movie.details.MovieDetailsViewModel
 import com.example.mvicompose.ui.feature.movie.details.composables.MovieDetailsScreen
 
 @Composable
 fun MovieDetailsScreenDestination(movie: Movie, navController: NavController) {
-    val viewModel: MovieDetailsViewModel = viewModel()
+    val viewModel: MovieDetailsViewModel = viewModel(factory = BaseAndroidViewModelFactory)
     viewModel.movie = movie
 
     MovieDetailsScreen(

@@ -1,5 +1,6 @@
 package com.example.mvicompose.ui.feature.main
 
+import android.app.Application
 import android.content.Context
 import androidx.biometric.BiometricPrompt
 import androidx.lifecycle.viewModelScope
@@ -8,19 +9,21 @@ import com.example.mvicompose.common.CVV
 import com.example.mvicompose.common.SECRET_KEY_NAME
 import com.example.mvicompose.common.SHARED_PREFS_FILENAME
 import com.example.mvicompose.cryptography.CryptographyManagerImpl
-import com.example.mvicompose.ui.base.BaseViewModel
+import com.example.mvicompose.ui.base.BaseAndroidViewModel
 import com.example.mvicompose.ui.feature.main.MainContract.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainViewModel : BaseViewModel<Event, State, Effect>() {
+class MainViewModel(application: Application) :
+    BaseAndroidViewModel<Event, State, Effect>(application) {
 
     override fun setInitialState() = State.getDefaultState()
     private val cryptographyManager = CryptographyManagerImpl()
 
-    init {
+    private fun initName() {
         viewModelScope.launch(Dispatchers.IO) {
+            setState { copy(isLoading = true) }
             val name = getUserName()
             setState { copy(isLoading = false, name = generateHelloString(name)) }
         }
@@ -28,11 +31,8 @@ class MainViewModel : BaseViewModel<Event, State, Effect>() {
 
     override fun handleEvents(event: Event) {
         when (event) {
-            is Event.PreviewButtonClick -> setEffect { Effect.Navigation.ToPreview }
-            is Event.BiometricAuthenticationResult -> biometricAuthenticationResult(
-                event.authenticationResult,
-                event.applicationContext
-            )
+            is Event.GraphQLButtonClick -> setEffect { Effect.Navigation.ToPreview }
+            is Event.BiometricAuthenticationResult -> biometricAuthenticationResult(event.authenticationResult)
             is Event.LoginButtonClick -> setEffect {
                 Effect.ShowBiometricsPrompt(
                     BiometricPrompt.CryptoObject(
@@ -40,32 +40,30 @@ class MainViewModel : BaseViewModel<Event, State, Effect>() {
                     )
                 )
             }
+            is Event.InitName -> initName()
         }
     }
 
-    private fun biometricAuthenticationResult(
-        authenticationResult: BiometricPrompt.AuthenticationResult,
-        applicationContext: Context
-    ) {
+    private fun biometricAuthenticationResult(authenticationResult: BiometricPrompt.AuthenticationResult) {
         viewModelScope.launch(Dispatchers.IO) {
             setState { copy(isLoading = true) }
 
             // fetch CVV from server
             val cvv = fetchCVV()
 
+            setState { copy(isLoading = false) }
+
             // encrypting CVV according to user biometrics
             authenticationResult.cryptoObject?.cipher?.run {
                 val encryptedCVVWrapper = cryptographyManager.encryptData(cvv, this)
                 cryptographyManager.persistCiphertextWrapperToSharedPrefs(
                     encryptedCVVWrapper,
-                    applicationContext,
+                    getApplication(),
                     SHARED_PREFS_FILENAME,
                     Context.MODE_PRIVATE,
                     CIPHERTEXT_WRAPPER
                 )
             }
-
-            setState { copy(isLoading = false) }
 
             setEffect { Effect.Navigation.ToMoviesScreen }
         }

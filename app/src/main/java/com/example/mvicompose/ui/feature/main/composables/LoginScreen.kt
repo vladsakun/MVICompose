@@ -48,6 +48,8 @@ fun LoginScreen(
         })
 
     LaunchedEffect(SIDE_EFFECTS_KEY) {
+        onEventSent(MainContract.Event.InitName)
+
         effectFlow.onEach { effect ->
             when (effect) {
                 is MainContract.Effect.ShowBiometricsPrompt -> {
@@ -57,8 +59,7 @@ fun LoginScreen(
                                 BiometricPromptUtils.createBiometricPrompt(context) { authResult ->
                                     onEventSent(
                                         MainContract.Event.BiometricAuthenticationResult(
-                                            authResult,
-                                            context.applicationContext
+                                            authResult
                                         )
                                     )
                                 }
@@ -76,46 +77,44 @@ fun LoginScreen(
         }.collect()
     }
 
-
-    when {
-        state.isLoading -> Progress()
-        else -> {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        brush = Brush.verticalGradient(
-                            listOf(
-                                colorResource(id = R.color.purple_700),
-                                colorResource(id = R.color.purple_200)
-                            )
-                        )
-                    ),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Button(
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = MaterialTheme.colors.secondary,
-                        contentColor = MaterialTheme.colors.primary
-                    ),
-                    onClick = { onEventSent(MainContract.Event.LoginButtonClick) }
-                ) {
-                    Text(text = state.name)
-                }
-
-                Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
-
-                Button(
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = MaterialTheme.colors.onPrimary,
-                        contentColor = MaterialTheme.colors.primary
-                    ),
-                    onClick = { onEventSent(MainContract.Event.PreviewButtonClick) }
-                ) {
-                    Text(text = stringResource(id = R.string.graphQL))
-                }
-            }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.verticalGradient(
+                    listOf(
+                        colorResource(id = R.color.purple_700),
+                        colorResource(id = R.color.purple_200)
+                    )
+                )
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = MaterialTheme.colors.secondary,
+                contentColor = MaterialTheme.colors.primary
+            ),
+            onClick = { onEventSent(MainContract.Event.LoginButtonClick) }
+        ) {
+            Text(text = state.name)
         }
+
+        Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
+
+        Button(
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = MaterialTheme.colors.onPrimary,
+                contentColor = MaterialTheme.colors.primary
+            ),
+            onClick = { onEventSent(MainContract.Event.GraphQLButtonClick) }
+        ) {
+            Text(text = stringResource(id = R.string.graphQL))
+        }
+    }
+
+    if (state.isLoading) {
+        Progress()
     }
 }

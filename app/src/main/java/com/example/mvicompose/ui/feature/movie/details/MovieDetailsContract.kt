@@ -1,6 +1,5 @@
 package com.example.mvicompose.ui.feature.movie.details
 
-import android.content.Context
 import androidx.biometric.BiometricPrompt
 import com.example.mvicompose.data.model.Movie
 import com.example.mvicompose.ui.base.ViewEvent
@@ -9,10 +8,9 @@ import com.example.mvicompose.ui.base.ViewState
 
 class MovieDetailsContract {
     sealed class Event : ViewEvent {
-        class BuyButtonClicked(val applicationContext: Context) : Event()
+        object BuyButtonClicked : Event()
         class AuthViaBiometricSuccess(
-            val authenticationResult: BiometricPrompt.AuthenticationResult,
-            val applicationContext: Context
+            val authenticationResult: BiometricPrompt.AuthenticationResult
         ) : Event()
     }
 
@@ -23,8 +21,7 @@ class MovieDetailsContract {
     sealed class Effect : ViewSideEffect {
         class ShowBiometricPromptForDecryption(
             val cryptoObject: BiometricPrompt.CryptoObject
-        ) :
-            Effect()
+        ) : Effect()
 
         object SuccessTransaction : Effect()
     }

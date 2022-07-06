@@ -1,5 +1,6 @@
 package com.example.mvicompose.ui.feature.movie.details
 
+import android.app.Application
 import android.content.Context
 import androidx.biometric.BiometricPrompt
 import com.example.mvicompose.common.CIPHERTEXT_WRAPPER
@@ -8,10 +9,12 @@ import com.example.mvicompose.common.SHARED_PREFS_FILENAME
 import com.example.mvicompose.cryptography.CiphertextWrapper
 import com.example.mvicompose.cryptography.CryptographyManagerImpl
 import com.example.mvicompose.data.model.Movie
-import com.example.mvicompose.ui.base.BaseViewModel
+import com.example.mvicompose.ui.base.BaseAndroidViewModel
 
-class MovieDetailsViewModel :
-    BaseViewModel<MovieDetailsContract.Event, MovieDetailsContract.State, MovieDetailsContract.Effect>() {
+class MovieDetailsViewModel(application: Application) :
+    BaseAndroidViewModel<MovieDetailsContract.Event, MovieDetailsContract.State, MovieDetailsContract.Effect>(
+        application
+    ) {
 
     var movie: Movie? = null
         set(value) = setState { copy(movie = value) }
@@ -22,16 +25,13 @@ class MovieDetailsViewModel :
 
     override fun handleEvents(event: MovieDetailsContract.Event) {
         when (event) {
-            is MovieDetailsContract.Event.BuyButtonClicked -> buyButtonClicked(event.applicationContext)
-            is MovieDetailsContract.Event.AuthViaBiometricSuccess -> {
-                decryptCVVFromStorage(event.authenticationResult, event.applicationContext)
-            }
+            is MovieDetailsContract.Event.BuyButtonClicked -> buyButtonClicked()
+            is MovieDetailsContract.Event.AuthViaBiometricSuccess -> decryptCVVFromStorage(event.authenticationResult)
         }
-
     }
 
-    private fun buyButtonClicked(applicationContext: Context) {
-        getCiphertextWrapperFromSharedPrefs(applicationContext)?.let { textWrapper ->
+    private fun buyButtonClicked() {
+        getCiphertextWrapperFromSharedPrefs()?.let { textWrapper ->
             setEffect {
                 MovieDetailsContract.Effect.ShowBiometricPromptForDecryption(
                     BiometricPrompt.CryptoObject(
@@ -45,11 +45,8 @@ class MovieDetailsViewModel :
         }
     }
 
-    private fun decryptCVVFromStorage(
-        authenticationResult: BiometricPrompt.AuthenticationResult,
-        applicationContext: Context
-    ) {
-        getCiphertextWrapperFromSharedPrefs(applicationContext)?.let { textWrapper ->
+    private fun decryptCVVFromStorage(authenticationResult: BiometricPrompt.AuthenticationResult) {
+        getCiphertextWrapperFromSharedPrefs()?.let { textWrapper ->
             authenticationResult.cryptoObject?.cipher?.let {
                 val cvv = cryptographyManager.decryptData(textWrapper.ciphertext, it)
                 setEffect { MovieDetailsContract.Effect.SuccessTransaction }
@@ -57,9 +54,9 @@ class MovieDetailsViewModel :
         }
     }
 
-    private fun getCiphertextWrapperFromSharedPrefs(applicationContext: Context): CiphertextWrapper? {
+    private fun getCiphertextWrapperFromSharedPrefs(): CiphertextWrapper? {
         return cryptographyManager.getCiphertextWrapperFromSharedPrefs(
-            applicationContext,
+            getApplication(),
             SHARED_PREFS_FILENAME,
             Context.MODE_PRIVATE,
             CIPHERTEXT_WRAPPER

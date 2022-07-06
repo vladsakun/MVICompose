@@ -22,7 +22,7 @@ import com.example.mvicompose.R
 import com.example.mvicompose.cryptography.BiometricPromptUtils
 import com.example.mvicompose.ui.base.SIDE_EFFECTS_KEY
 import com.example.mvicompose.ui.feature.movie.details.MovieDetailsContract
-import com.example.mvicompose.ui.feature.movie.list.composables.MoviesTopBar
+import com.example.mvicompose.ui.feature.movie.list.composables.MVIComposeAppTopBar
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -49,8 +49,7 @@ fun MovieDetailsScreen(
                         BiometricPromptUtils.createBiometricPrompt(context) {
                             onEventSent(
                                 MovieDetailsContract.Event.AuthViaBiometricSuccess(
-                                    it,
-                                    context.applicationContext
+                                    it
                                 )
                             )
                         }
@@ -70,7 +69,7 @@ fun MovieDetailsScreen(
     state.movie?.let { movie ->
         Scaffold(
             scaffoldState = scaffoldState,
-            topBar = { MoviesTopBar(movie.title) },
+            topBar = { MVIComposeAppTopBar(movie.title) },
         ) {
 
             Column(
@@ -141,7 +140,7 @@ fun MovieDetailsScreen(
                         .align(Alignment.CenterHorizontally)
                         .padding(top = paddingMedium),
                     onClick = {
-                        onEventSent(MovieDetailsContract.Event.BuyButtonClicked(context.applicationContext))
+                        onEventSent(MovieDetailsContract.Event.BuyButtonClicked)
                     }
                 ) {
                     Text(stringResource(id = R.string.buy))

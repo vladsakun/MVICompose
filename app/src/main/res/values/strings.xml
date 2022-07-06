@@ -25,4 +25,5 @@
     <string name="status">Status: %s</string>
     <string name="type">Type: %s</string>
     <string name="gender">Gender: %s</string>
+    <string name="characters">Characters</string>
 </resources>

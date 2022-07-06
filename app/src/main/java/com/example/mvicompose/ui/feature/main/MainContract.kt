@@ -1,6 +1,5 @@
 package com.example.mvicompose.ui.feature.main
 
-import android.content.Context
 import androidx.biometric.BiometricPrompt
 import com.example.mvicompose.ui.base.ViewEvent
 import com.example.mvicompose.ui.base.ViewSideEffect
@@ -9,13 +8,13 @@ import com.example.mvicompose.ui.base.ViewState
 class MainContract {
 
     sealed class Event : ViewEvent {
-        object PreviewButtonClick : Event()
+        object GraphQLButtonClick : Event()
         object LoginButtonClick : Event()
         class BiometricAuthenticationResult(
-            val authenticationResult: BiometricPrompt.AuthenticationResult,
-            // May be improved via AndroidViewModel or DI
-            val applicationContext: Context
+            val authenticationResult: BiometricPrompt.AuthenticationResult
         ) : Event()
+
+        object InitName : Event()
     }
 
     data class State(
@@ -24,7 +23,7 @@ class MainContract {
     ) : ViewState {
 
         companion object {
-            fun getDefaultState() = State(true, "")
+            fun getDefaultState() = State(false, "")
         }
     }
 
