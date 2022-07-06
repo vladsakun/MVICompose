@@ -1,4 +1,4 @@
-package com.example.mvicompose.ui.feature.login.composables
+package com.example.mvicompose.ui.feature.main.composables
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,17 +24,17 @@ import com.example.mvicompose.R
 import com.example.mvicompose.cryptography.BiometricPromptUtils
 import com.example.mvicompose.ui.base.SIDE_EFFECTS_KEY
 import com.example.mvicompose.ui.common.Progress
-import com.example.mvicompose.ui.feature.login.LoginContract
+import com.example.mvicompose.ui.feature.main.MainContract
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 
 @Composable
 fun LoginScreen(
-    state: LoginContract.State,
-    effectFlow: Flow<LoginContract.Effect>?,
-    onEventSent: (event: LoginContract.Event) -> Unit,
-    onNavigationRequested: (navigationEffect: LoginContract.Effect.Navigation) -> Unit
+    state: MainContract.State,
+    effectFlow: Flow<MainContract.Effect>,
+    onEventSent: (event: MainContract.Event) -> Unit,
+    onNavigationRequested: (navigationEffect: MainContract.Effect.Navigation) -> Unit
 ) {
 
     val context = LocalContext.current
@@ -43,20 +43,20 @@ fun LoginScreen(
         contract = ActivityResultContracts.StartActivityForResult(),
         onResult = {
             if (biometricManager.canAuthenticate(BIOMETRIC_STRONG) == BIOMETRIC_SUCCESS) {
-                onEventSent(LoginContract.Event.LoginButtonClick)
+                onEventSent(MainContract.Event.LoginButtonClick)
             }
         })
 
     LaunchedEffect(SIDE_EFFECTS_KEY) {
-        effectFlow?.onEach { effect ->
+        effectFlow.onEach { effect ->
             when (effect) {
-                is LoginContract.Effect.ShowBiometricsPrompt -> {
+                is MainContract.Effect.ShowBiometricsPrompt -> {
                     when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
                         BIOMETRIC_SUCCESS -> {
                             val biometricPrompt =
                                 BiometricPromptUtils.createBiometricPrompt(context) { authResult ->
                                     onEventSent(
-                                        LoginContract.Event.BiometricAuthenticationResult(
+                                        MainContract.Event.BiometricAuthenticationResult(
                                             authResult,
                                             context.applicationContext
                                         )
@@ -68,51 +68,53 @@ fun LoginScreen(
                         BIOMETRIC_ERROR_NONE_ENROLLED -> {
                             addBiometricsResult.launch(BiometricPromptUtils.getEnrollBiometricsIntent())
                         }
+                        else -> Unit
                     }
                 }
-                is LoginContract.Effect.Navigation -> onNavigationRequested(effect)
+                is MainContract.Effect.Navigation -> onNavigationRequested(effect)
             }
-        }?.collect()
+        }.collect()
     }
 
 
-    if (state.isLoading) {
-        Progress()
-    } else {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    brush = Brush.verticalGradient(
-                        listOf(
-                            colorResource(id = R.color.purple_700),
-                            colorResource(id = R.color.purple_200)
+    when {
+        state.isLoading -> Progress()
+        else -> {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            listOf(
+                                colorResource(id = R.color.purple_700),
+                                colorResource(id = R.color.purple_200)
+                            )
                         )
-                    )
-                ),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Button(
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = MaterialTheme.colors.secondary,
-                    contentColor = MaterialTheme.colors.primary
-                ),
-                onClick = { onEventSent(LoginContract.Event.LoginButtonClick) }
+                    ),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                Text(text = state.name)
-            }
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = MaterialTheme.colors.secondary,
+                        contentColor = MaterialTheme.colors.primary
+                    ),
+                    onClick = { onEventSent(MainContract.Event.LoginButtonClick) }
+                ) {
+                    Text(text = state.name)
+                }
 
-            Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
+                Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
 
-            Button(
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = MaterialTheme.colors.onPrimary,
-                    contentColor = MaterialTheme.colors.primary
-                ),
-                onClick = { onEventSent(LoginContract.Event.PreviewButtonClick) }
-            ) {
-                Text(text = stringResource(id = R.string.preview_mode))
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = MaterialTheme.colors.onPrimary,
+                        contentColor = MaterialTheme.colors.primary
+                    ),
+                    onClick = { onEventSent(MainContract.Event.PreviewButtonClick) }
+                ) {
+                    Text(text = stringResource(id = R.string.graphQL))
+                }
             }
         }
     }

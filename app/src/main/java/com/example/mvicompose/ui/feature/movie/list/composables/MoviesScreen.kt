@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.onEach
 @Composable
 fun MoviesScreen(
     state: MoviesContract.State,
-    effectFlow: Flow<MoviesContract.Effect>?,
+    effectFlow: Flow<MoviesContract.Effect>,
     onEventSent: (event: MoviesContract.Event) -> Unit,
     onNavigationRequested: (navigationEffect: MoviesContract.Effect.Navigation) -> Unit
 ) {
@@ -27,7 +27,7 @@ fun MoviesScreen(
     val snackBarMessage = stringResource(id = R.string.movies_loaded)
 
     LaunchedEffect(SIDE_EFFECTS_KEY) {
-        effectFlow?.onEach { effect ->
+        effectFlow.onEach { effect ->
             when (effect) {
                 is MoviesContract.Effect.DataWasLoaded -> {
                     scaffoldState.snackbarHostState.showSnackbar(
@@ -37,7 +37,7 @@ fun MoviesScreen(
                 }
                 is MoviesContract.Effect.Navigation.ToMovieDetails -> onNavigationRequested(effect)
             }
-        }?.collect()
+        }.collect()
     }
 
     Scaffold(

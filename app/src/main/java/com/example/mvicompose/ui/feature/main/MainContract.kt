@@ -1,4 +1,4 @@
-package com.example.mvicompose.ui.feature.login
+package com.example.mvicompose.ui.feature.main
 
 import android.content.Context
 import androidx.biometric.BiometricPrompt
@@ -6,7 +6,7 @@ import com.example.mvicompose.ui.base.ViewEvent
 import com.example.mvicompose.ui.base.ViewSideEffect
 import com.example.mvicompose.ui.base.ViewState
 
-class LoginContract {
+class MainContract {
 
     sealed class Event : ViewEvent {
         object PreviewButtonClick : Event()

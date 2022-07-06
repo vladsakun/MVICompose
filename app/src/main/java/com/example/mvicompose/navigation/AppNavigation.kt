@@ -24,8 +24,26 @@ fun AppNavigation() {
             LoginScreenDestination(navController)
         }
 
-        composable(Route.Preview.toString()) {
-            PreviewScreenDestination(navController)
+        composable(Route.CharactersList.toString()) {
+            CharactersScreenDestination(navController)
+        }
+
+        composable(
+            route = Route.CharacterDetails.toString(),
+            arguments = listOf(
+                navArgument(Route.CharacterDetails.Key) {
+                    type = NavType.StringType
+                }
+            )
+        ) { entry ->
+            val characterId = entry.rememberGetData<String>(key = Route.CharacterDetails.Key)
+
+            characterId?.let {
+                CharacterDestination(
+                    characterId = it,
+                    navController = navController
+                )
+            }
         }
 
         composable(Route.Movies.toString()) {
@@ -57,7 +75,8 @@ sealed class Route(
     val Key: String = ""
 ) {
     object Login : Route(route = "login")
-    object Preview : Route(route = "preview")
+    object CharactersList : Route(route = "characters_list")
+    object CharacterDetails : Route(route = "character_details", Key = "character_id")
     object Movies : Route(route = "movies")
     object MovieDetails : Route(route = "movie_details", Key = "movie")
 
@@ -73,5 +92,12 @@ fun NavController.navigateToMovieDetails(movie: Movie) {
     navigate(
         route = Route.MovieDetails.toString(),
         data = Route.MovieDetails.Key to movie
+    )
+}
+
+fun NavController.navigateToCharacterDetails(characterId: String) {
+    navigate(
+        route = Route.CharacterDetails.toString(),
+        data = Route.CharacterDetails.Key to characterId
     )
 }

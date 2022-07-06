@@ -1,14 +1,22 @@
 package com.example.mvicompose.data.repository
 
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.Response
+import com.apollographql.apollo.coroutines.await
+import com.example.mvicompose.CharacterQuery
+import com.example.mvicompose.CharactersListQuery
 import com.example.mvicompose.R
 import com.example.mvicompose.data.model.Movie
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import okhttp3.OkHttpClient
 
-class MovieRepositoryImpl(
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : MovieRepository {
+object MainRepositoryImpl : MainRepository {
+
+    private val okHttpClient = OkHttpClient.Builder().build()
+    private val apolloClient = ApolloClient.builder()
+        .serverUrl("https://rickandmortyapi.com/graphql")
+        .okHttpClient(okHttpClient)
+        .build()
 
     override suspend fun getMovies(): List<Movie> {
         delay(1000)
@@ -55,4 +63,35 @@ class MovieRepositoryImpl(
             )
         )
     }
+
+    override suspend fun getCharacters(): Response<CharactersListQuery.Data> {
+        return apolloClient.query(CharactersListQuery()).await()
+    }
+
+    override suspend fun getCharacter(id: String): Response<CharacterQuery.Data> {
+        return apolloClient.query(CharacterQuery(id)).await()
+    }
 }
+
+fun getMockedCharactersList(): List<CharactersListQuery.Result> {
+    return List(size = 10) {
+        CharactersListQuery.Result(
+            __typename = "",
+            id = "1",
+            name = "Rick Sanchez",
+            species = "Human",
+            image = "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+        )
+    }
+}
+
+fun getMockedCharacter() = CharacterQuery.Character(
+    __typename = "",
+    id = "1",
+    name = "Rick Sanchez",
+    status = "Alive",
+    species = "Human",
+    type = "Unknown",
+    gender = "Male",
+    image = "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+)

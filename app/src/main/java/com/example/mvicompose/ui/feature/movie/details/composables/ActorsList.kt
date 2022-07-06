@@ -13,8 +13,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mvicompose.R
+import com.example.mvicompose.data.model.buildActorsPreview
 
 @Composable
 fun ActorsList(actorsDrawableResIds: List<Int>) {
@@ -37,4 +39,10 @@ fun ActorsList(actorsDrawableResIds: List<Int>) {
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewActorsList() {
+    ActorsList(actorsDrawableResIds = buildActorsPreview())
 }

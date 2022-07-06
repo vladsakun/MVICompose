@@ -2,6 +2,7 @@ plugins {
 	alias libs.plugins.android.application
 	alias libs.plugins.kotlin.android
 	alias libs.plugins.kotlin.kapt
+	id "com.apollographql.apollo"
 }
 
 android {
@@ -62,6 +63,9 @@ android {
 			version '3.18.1'
 		}
 	}
+	apollo {
+		generateKotlinModels.set(true)
+	}
 }
 
 dependencies {
@@ -75,8 +79,8 @@ dependencies {
 
 	implementation libs.bundles.compose
 	implementation libs.bundles.lifecycle
+	implementation libs.bundles.apollo
 
 	testImplementation libs.junit
-	androidTestImplementation libs.kakao
 	androidTestImplementation libs.junitAndroid
 }

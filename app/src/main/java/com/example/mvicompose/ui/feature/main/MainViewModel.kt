@@ -1,4 +1,4 @@
-package com.example.mvicompose.ui.feature.login
+package com.example.mvicompose.ui.feature.main
 
 import android.content.Context
 import androidx.biometric.BiometricPrompt
@@ -9,12 +9,12 @@ import com.example.mvicompose.common.SECRET_KEY_NAME
 import com.example.mvicompose.common.SHARED_PREFS_FILENAME
 import com.example.mvicompose.cryptography.CryptographyManagerImpl
 import com.example.mvicompose.ui.base.BaseViewModel
-import com.example.mvicompose.ui.feature.login.LoginContract.*
+import com.example.mvicompose.ui.feature.main.MainContract.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class LoginViewModel : BaseViewModel<Event, State, Effect>() {
+class MainViewModel : BaseViewModel<Event, State, Effect>() {
 
     override fun setInitialState() = State.getDefaultState()
     private val cryptographyManager = CryptographyManagerImpl()
@@ -81,7 +81,7 @@ class LoginViewModel : BaseViewModel<Event, State, Effect>() {
         return "Vlad"
     }
 
-    external fun generateHelloString(name: String): String
+    private external fun generateHelloString(name: String): String
 
     companion object {
         init {

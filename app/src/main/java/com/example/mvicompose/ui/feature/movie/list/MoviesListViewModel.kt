@@ -1,14 +1,14 @@
 package com.example.mvicompose.ui.feature.movie.list
 
 import androidx.lifecycle.viewModelScope
-import com.example.mvicompose.data.repository.MovieRepositoryImpl
+import com.example.mvicompose.data.repository.MainRepositoryImpl
 import com.example.mvicompose.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class MoviesListViewModel :
     BaseViewModel<MoviesContract.Event, MoviesContract.State, MoviesContract.Effect>() {
 
-    private val repository = MovieRepositoryImpl()
+    private val repository = MainRepositoryImpl
     private var isError = true
 
     init {

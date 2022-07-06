@@ -7,7 +7,7 @@
     <string name="network_error_description">A network error occurred. Check your connection or try again</string>
     <string name="network_error_title">Oh no!</string>
     <string name="network_error_retry_button_text">Try again</string>
-    <string name="preview_mode">Preview mode</string>
+    <string name="graphQL">GraphQL</string>
     <string name="preview">Just preview activity</string>
     <string name="login">%s, login</string>
     <string name="biometrics_dialog_title">Biometric login for my app</string>
@@ -19,4 +19,10 @@
     <string name="movie_label_overview">Overview:</string>
     <string name="movie_label_actors">Actors:</string>
     <string name="buy">Buy</string>
+    <string name="species">Species: %s</string>
+    <string name="name">Name: %s</string>
+    <string name="id">Id: %s</string>
+    <string name="status">Status: %s</string>
+    <string name="type">Type: %s</string>
+    <string name="gender">Gender: %s</string>
 </resources>

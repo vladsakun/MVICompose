@@ -1,6 +1,7 @@
 buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.1'
+        classpath 'com.apollographql.apollo:apollo-gradle-plugin:2.5.4'
     }
 }
 plugins {

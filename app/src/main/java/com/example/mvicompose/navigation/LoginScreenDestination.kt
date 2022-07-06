@@ -3,15 +3,15 @@ package com.example.mvicompose.navigation
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.mvicompose.ui.feature.login.LoginContract.Effect.Navigation
-import com.example.mvicompose.ui.feature.login.LoginViewModel
-import com.example.mvicompose.ui.feature.login.composables.LoginScreen
+import com.example.mvicompose.ui.feature.main.MainContract.Effect.Navigation
+import com.example.mvicompose.ui.feature.main.MainViewModel
+import com.example.mvicompose.ui.feature.main.composables.LoginScreen
 
 @Composable
 fun LoginScreenDestination(
     navController: NavController
 ) {
-    val viewModel: LoginViewModel = viewModel()
+    val viewModel: MainViewModel = viewModel()
 
     LoginScreen(
         state = viewModel.viewState.value,
@@ -19,7 +19,7 @@ fun LoginScreenDestination(
         onEventSent = { event -> viewModel.setEvent(event) },
         onNavigationRequested = { navigationEffect ->
             when (navigationEffect) {
-                is Navigation.ToPreview -> navController.navigate(Route.Preview.toString())
+                is Navigation.ToPreview -> navController.navigate(Route.CharactersList.toString())
                 is Navigation.ToMoviesScreen -> navController.navigate(Route.Movies.toString())
             }
         }

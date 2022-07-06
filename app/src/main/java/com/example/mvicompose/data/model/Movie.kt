@@ -28,3 +28,5 @@ fun buildMoviePreview() = Movie(
     posterDrawableResId = R.drawable.once_hollywood,
     voteAverage = 9.6,
 )
+
+fun buildActorsPreview() = buildMoviePreview().actorsDrawableResIds
