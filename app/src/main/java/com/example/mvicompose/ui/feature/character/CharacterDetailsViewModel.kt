@@ -1,7 +1,6 @@
 package com.example.mvicompose.ui.feature.character
 
 import androidx.lifecycle.viewModelScope
-import com.example.mvicompose.CharacterQuery
 import com.example.mvicompose.data.repository.MainRepositoryImpl
 import com.example.mvicompose.ui.base.BaseViewModel
 import kotlinx.coroutines.Dispatchers
@@ -11,7 +10,6 @@ class CharacterDetailsViewModel :
     BaseViewModel<CharacterDetailsContract.Event, CharacterDetailsContract.State, CharacterDetailsContract.Effect>() {
 
     private var characterId: String? = null
-    private var mCharacter: CharacterQuery.Character? = null
 
     override fun setInitialState() = CharacterDetailsContract.State.getDefaultState()
     override fun handleEvents(event: CharacterDetailsContract.Event) {
@@ -21,11 +19,8 @@ class CharacterDetailsViewModel :
     }
 
     fun loadCharacter(characterId: String) {
-        // Todo Ask Pavel about recomposition
-        if (mCharacter == null) {
-            this.characterId = characterId
-            getCharacter(characterId)
-        }
+        this.characterId = characterId.lowercase()
+        getCharacter(characterId)
     }
 
     private fun getCharacter(id: String) {
@@ -36,7 +31,6 @@ class CharacterDetailsViewModel :
                 MainRepositoryImpl.getCharacter(id)
             }.onSuccess {
                 it.data?.character?.let { character ->
-                    mCharacter = character
                     setState { copy(isLoading = false, character = character) }
                 } ?: run {
                     setState { copy(isLoading = false, isError = true) }

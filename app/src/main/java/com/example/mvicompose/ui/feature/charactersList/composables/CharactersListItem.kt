@@ -12,6 +12,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,8 +26,9 @@ import com.example.mvicompose.data.repository.getMockedCharactersList
 @Composable
 fun CharactersListItem(
     character: CharactersListQuery.Result,
-    onItemClick: (characterId: String) -> Unit
+    onItemClick: (characterId: String) -> Unit,
 ) {
+    val isInEditMode = LocalView.current.isInEditMode
     Card(
         shape = RoundedCornerShape(10.dp),
         onClick = { onItemClick(character.id.orEmpty()) }
@@ -34,6 +37,7 @@ fun CharactersListItem(
             AsyncImage(
                 model = character.image,
                 contentDescription = null,
+                placeholder = if (isInEditMode) painterResource(id = R.drawable.samuel) else null,
                 modifier = Modifier.weight(1f),
                 contentScale = ContentScale.Crop,
             )

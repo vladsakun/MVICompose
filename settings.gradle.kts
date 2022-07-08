@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "MVICompose"
-include ':app'
+include(":app")

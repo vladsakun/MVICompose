@@ -10,4 +10,10 @@ class MVIComposeApp : Application() {
 
         BaseAndroidViewModelFactory.inject(this)
     }
+
+    companion object {
+        init {
+            System.loadLibrary("mvicompose")
+        }
+    }
 }

@@ -25,7 +25,6 @@ class MoviesListViewModel :
         }
     }
 
-    // TODO Extract to a reducer
     private fun getMovies() {
         viewModelScope.launch {
             setState { copy(isLoading = true, isError = false) }

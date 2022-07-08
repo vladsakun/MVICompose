@@ -81,9 +81,4 @@ class MainViewModel(application: Application) :
 
     private external fun generateHelloString(name: String): String
 
-    companion object {
-        init {
-            System.loadLibrary("mvicompose")
-        }
-    }
 }

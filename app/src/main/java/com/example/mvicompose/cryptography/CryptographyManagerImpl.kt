@@ -3,7 +3,6 @@ package com.example.mvicompose.cryptography
 import android.content.Context
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import android.util.Log
 import com.example.mvicompose.common.ANDROID_KEY_STORE
 import com.squareup.moshi.Moshi
 import java.nio.charset.Charset
@@ -64,8 +63,6 @@ class CryptographyManagerImpl : CryptographyManager {
             setUserAuthenticationRequired(false)
         }
 
-        Log.d(TAG, "getOrCreateSecretKey: ${getKeySize()}")
-
         val keyGenParams = paramsBuilder.build()
         val keyGenerator = KeyGenerator.getInstance(
             KeyProperties.KEY_ALGORITHM_AES,
@@ -110,9 +107,5 @@ class CryptographyManagerImpl : CryptographyManager {
         private const val ENCYPTION_BLOCK_MODE = KeyProperties.BLOCK_MODE_GCM
         private const val ENCYPTION_PADDING = KeyProperties.ENCRYPTION_PADDING_NONE
         private const val ENCYPTION_ALGORITHM = KeyProperties.KEY_ALGORITHM_AES
-
-        init {
-            System.loadLibrary("mvicompose")
-        }
     }
 }
