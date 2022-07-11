@@ -67,6 +67,10 @@ android {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjvm-default=enable")
     }
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
 
     // Custom task
     applicationVariants.all {
@@ -80,24 +84,8 @@ android {
     }
 }
 
-gradle.taskGraph.whenReady {
-    val sources = File("${project.projectDir}/src/main/java/com/example/mvicompose")
-    printDirectoryTree(sources)
-}
-
-fun printDirectoryTree(folder: File?) {
-    if (folder != null && folder.isDirectory && folder.listFiles() != null) {
-        for (file in folder.listFiles()!!) {
-            if (file.isDirectory) {
-                printDirectoryTree(file)
-            } else {
-                if (file.name.endsWith("ViewModel.kt")) {
-                    println(file.name)
-                }
-            }
-        }
-    }
-}
+tasks.register<PrintViewModelsTask>("printViewModels")
+tasks.named("assemble") { finalizedBy("printViewModels") }
 
 dependencies {
     implementation(libs.kotlin.coroutines.android)
